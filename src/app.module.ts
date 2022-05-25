@@ -6,12 +6,11 @@ import { DirectiveLocation, GraphQLDirective } from 'graphql';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { upperDirectiveTransformer } from './common/directives/upper-case.directive';
-import { RecipesModule } from './modules/recipes/recipes.module';
 import { UsersModule } from './modules/users/users.module';
+import { RolesModule } from './modules/roles/roles.module';
 
 @Module({
   imports: [
-    RecipesModule,
     UsersModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -37,6 +36,7 @@ import { UsersModule } from './modules/users/users.module';
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: true,
     }),
+    RolesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
